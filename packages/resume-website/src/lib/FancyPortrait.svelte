@@ -6,7 +6,10 @@
 	let time = 0;
 	let threshold1 = 0.3;
 	let threshold2 = 0.6;
+	export let width = 300;
+	export let height = 400;
 
+	$: aspectRatio = width / height;
 	const animDuration = 0.6;
 
 	/**
@@ -28,21 +31,26 @@
 		if (!browser) {
 			return;
 		}
+		let canvas = document.getElementById('fancyportrait');
+		if (!canvas) {
+			console.error('Could not find canvas element');
+			return;
+		}
+
 		const vertexShader = await fetch('/fancyportrait_vertex.glsl').then((r) => r.text());
 		const fragmentShader = await fetch('/fancyportrait_frag.glsl').then((r) => r.text());
 
 		const scene = new THREE.Scene();
-		const camera = new THREE.PerspectiveCamera(75, 3 / 4, 0.1, 1000);
+		const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
 
 		const renderer = new THREE.WebGLRenderer({
 			alpha: true,
-			antialias: true
+			antialias: true,
+			canvas
 		});
-		renderer.setSize(300, 400);
-		let container = document.getElementById('fancyportrait');
-		container?.appendChild(renderer.domElement);
+		renderer.setSize(width, height);
 
-		const geometry = new THREE.PlaneGeometry(3, 4, 60, 80);
+		const geometry = new THREE.PlaneGeometry(3, 3 / aspectRatio, 60, 80);
 		const texture = new THREE.TextureLoader().load('/portrait.png');
 		const material = new THREE.ShaderMaterial({
 			vertexShader,
@@ -50,7 +58,7 @@
 			glslVersion: THREE.GLSL3,
 			uniforms: {
 				itexture: { value: texture },
-				aspect: { value: 3 / 4 },
+				aspect: { value: aspectRatio },
 				gridLineColor: { value: new THREE.Vector4(...new THREE.Color(0x00ff00).toArray(), 1.0) }
 			},
 			transparent: true
@@ -62,9 +70,13 @@
 
 		let start = Date.now();
 		function animate() {
+			if (time > 1.5) {
+				return;
+			}
 			requestAnimationFrame(animate);
 
 			// update
+			camera.aspect = aspectRatio;
 			material.uniforms.time = { value: time };
 			let t1progress = clamp((time - 0.5) / animDuration, 0, 1);
 			threshold1 = easeInOutQuart(t1progress);
@@ -83,8 +95,15 @@
 </script>
 
 <!-- <span>{time}</span> -->
-<div id="fancyportrait" />
+<div style:width>
+	<!-- {#if !isAnimationStarted || isAnimationDone}
+		<img src="/portrait.png" alt="Portrait" />
+	{/if} -->
+	<canvas id="fancyportrait" {width} {height} />
+</div>
 
 <!-- <input type="range" min="0" max="1" step="0.01" bind:value={threshold1} /><br />
 <input type="range" min="0" max="1" step="0.01" bind:value={threshold2} /><br />
-<button on:click={() => (time = 0)}>Reset</button> -->
+<button on:click={reset}>Reset</button> -->
+<style lang="scss">
+</style>

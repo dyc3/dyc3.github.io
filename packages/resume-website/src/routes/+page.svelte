@@ -2,6 +2,18 @@
 	import FancyPortrait from '../lib/FancyPortrait.svelte';
 </script>
 
-<h1>Welcome to My Website</h1>
+<div class="hero">
+	<h1>Welcome to My Website</h1>
 
-<FancyPortrait />
+	<FancyPortrait width={408} height={612} />
+</div>
+
+<style lang="scss">
+	.hero {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		height: 500px;
+	}
+</style>

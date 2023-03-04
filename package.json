@@ -10,6 +10,7 @@
 		"check": "yarn workspaces run check",
 		"format": "yarn workspaces run format",
 		"lint": "yarn workspaces run lint",
+		"test": "yarn workspaces run test",
 		"preview": "yarn workspaces run preview"
 	}
 }

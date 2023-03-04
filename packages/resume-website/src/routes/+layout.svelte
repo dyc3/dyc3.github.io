@@ -1,9 +1,6 @@
-<slot />
+<script lang="ts">
+	import '@fortawesome/fontawesome-svg-core/styles.css'; // fixes fontawesome icons being rendered really big on first load
+	import '$lib/main.scss';
+</script>
 
-<style lang="scss">
-	:global(body) {
-		background: #11270b;
-		color: #fff;
-		font-family: 'Anonymous Pro', monospace;
-	}
-</style>
+<slot />

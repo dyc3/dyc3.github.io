@@ -26,7 +26,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
       - run: yarn install --frozen-lockfile
-      - run: yarn run test
+      - run: yarn run test:unit
       - run: yarn run build
 
   deploy:
@@ -44,4 +44,4 @@ jobs:
         uses: actions/upload-pages-artifact@v1.0.7
         with:
           # Path of the directory containing the static assets.
-          path: packages/resume-website/
+          path: packages/resume-website/build/

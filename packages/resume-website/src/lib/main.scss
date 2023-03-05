@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 @font-face {
 	font-family: 'Anonymous Pro';
 	src: url('/fonts/AnonymousPro-Bold.ttf');
@@ -23,12 +25,12 @@
 }
 
 body {
-	background: #11270b;
-	color: #fff;
+	background: $color-bg;
+	color: $color-fg;
 	font-family: 'Anonymous Pro', monospace;
 }
 
 a:link,
 a:visited {
-	color: #fff;
+	color: $color-fg;
 }

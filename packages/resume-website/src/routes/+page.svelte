@@ -42,6 +42,8 @@
 </div>
 
 <style lang="scss">
+	@import '../lib/variables.scss';
+
 	.hero {
 		display: flex;
 		flex-direction: row;
@@ -50,18 +52,30 @@
 		height: 500px;
 
 		font-size: 36px;
+		margin-bottom: 50px;
+
+		@media screen and (max-width: $screen-sm) {
+			font-size: 24px;
+
+			flex-direction: column;
+			height: auto;
+		}
 	}
 
 	.name {
 		text-align: center;
 		margin-right: 50px;
+
+		@media screen and (max-width: $screen-sm) {
+			margin-right: 0;
+		}
 	}
 
 	.socials {
 		:link,
 		:visited {
 			text-decoration: none;
-			color: #fff;
+			color: $color-fg;
 		}
 
 		.social:hover {

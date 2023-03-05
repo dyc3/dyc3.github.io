@@ -3,6 +3,9 @@
 	import { browser } from '$app/environment';
 	import * as THREE from 'three';
 
+	import fragmentShader from './fancyportrait_frag.glsl';
+	import vertexShader from './fancyportrait_vertex.glsl';
+
 	let time = 0;
 	let threshold1 = 0.3;
 	let threshold2 = 0.6;
@@ -37,8 +40,8 @@
 			return;
 		}
 
-		const vertexShader = await fetch('/fancyportrait_vertex.glsl').then((r) => r.text());
-		const fragmentShader = await fetch('/fancyportrait_frag.glsl').then((r) => r.text());
+		// const vertexShader = await fetch('/fancyportrait_vertex.glsl').then((r) => r.text());
+		// const fragmentShader = await fetch('/fancyportrait_frag.glsl').then((r) => r.text());
 
 		const scene = new THREE.Scene();
 		const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
@@ -59,7 +62,7 @@
 			uniforms: {
 				itexture: { value: texture },
 				aspect: { value: aspectRatio },
-				gridLineColor: { value: new THREE.Vector4(...new THREE.Color(0x00ff00).toArray(), 1.0) }
+				gridLineColor: { value: new THREE.Vector4(...new THREE.Color(0xff5a5f).toArray(), 1.0) }
 			},
 			transparent: true
 		});

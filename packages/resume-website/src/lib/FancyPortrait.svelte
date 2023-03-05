@@ -59,7 +59,7 @@
 			uniforms: {
 				itexture: { value: texture },
 				aspect: { value: aspectRatio },
-				gridLineColor: { value: new THREE.Vector4(...new THREE.Color(0x00ff00).toArray(), 1.0) }
+				gridLineColor: { value: new THREE.Vector4(...new THREE.Color(0xff5a5f).toArray(), 1.0) }
 			},
 			transparent: true
 		});

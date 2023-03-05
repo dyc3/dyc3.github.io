@@ -53,6 +53,7 @@
 
 		background-image: url('/bg.png');
 		background-size: cover;
+		background-position: 100%;
 
 		font-size: 36px;
 		margin-bottom: 50px;

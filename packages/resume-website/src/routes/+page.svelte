@@ -30,7 +30,7 @@
 		</div>
 	</div>
 
-	<FancyPortrait width={414} height={457} />
+	<FancyPortrait width={2613 / 8} height={4216 / 8} />
 </div>
 
 <div>
@@ -50,6 +50,9 @@
 		align-items: center;
 		justify-content: center;
 		height: 500px;
+
+		background-image: url('/bg.png');
+		background-size: cover;
 
 		font-size: 36px;
 		margin-bottom: 50px;

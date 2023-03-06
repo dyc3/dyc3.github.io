@@ -34,7 +34,17 @@
 </div>
 
 <div>
-	<p>I love coding.</p>
+	<p>
+		I love coding. Ever since I was a kid, I've dreamed of making my mark on the world as an
+		engineer.
+	</p>
+</div>
+
+<div>
+	<p>
+		There's not much here because this website is brand new, and I spent 3+ days on writing custom
+		shaders for the visual effect above.
+	</p>
 </div>
 
 <div>

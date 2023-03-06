@@ -69,7 +69,7 @@
 		camera.position.z = 3;
 
 		THREE.DefaultLoadingManager.onLoad = () => {
-			reset();
+			animate();
 		};
 
 		let start = Date.now();
@@ -94,7 +94,6 @@
 			time += elapsed / 1000;
 			start = Date.now();
 		}
-		animate();
 	});
 </script>
 

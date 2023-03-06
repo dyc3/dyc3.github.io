@@ -40,9 +40,6 @@
 			return;
 		}
 
-		// const vertexShader = await fetch('/fancyportrait_vertex.glsl').then((r) => r.text());
-		// const fragmentShader = await fetch('/fancyportrait_frag.glsl').then((r) => r.text());
-
 		const scene = new THREE.Scene();
 		const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
 
@@ -82,9 +79,9 @@
 			camera.aspect = aspectRatio;
 			material.uniforms.time = { value: time };
 			let t1progress = clamp((time - 0.5) / animDuration, 0, 1);
-			threshold1 = easeInOutQuart(t1progress);
+			threshold1 = easeInOutQuart(t1progress) * 1.2;
 			let t2progress = clamp((time - 0.2) / animDuration, 0, 1);
-			threshold2 = easeInOutQuart(t2progress);
+			threshold2 = easeInOutQuart(t2progress) * 1.2;
 			material.uniforms.threshold1 = { value: threshold1 };
 			material.uniforms.threshold2 = { value: threshold2 };
 
@@ -97,16 +94,12 @@
 	});
 </script>
 
-<!-- <span>{time}</span> -->
 <div style:width>
-	<!-- {#if !isAnimationStarted || isAnimationDone}
-		<img src="/portrait.png" alt="Portrait" />
-	{/if} -->
 	<canvas id="fancyportrait" {width} {height} />
 </div>
 
-<!-- <input type="range" min="0" max="1" step="0.01" bind:value={threshold1} /><br />
-<input type="range" min="0" max="1" step="0.01" bind:value={threshold2} /><br />
+<!-- <input type="range" min="0" max="2" step="0.01" bind:value={threshold1} /><br />
+<input type="range" min="0" max="2" step="0.01" bind:value={threshold2} /><br />
 <button on:click={reset}>Reset</button> -->
 <style lang="scss">
 </style>

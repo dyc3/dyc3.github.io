@@ -30,11 +30,21 @@
 		</div>
 	</div>
 
-	<FancyPortrait width={414} height={457} />
+	<FancyPortrait width={2613 / 8} height={4216 / 8} />
 </div>
 
 <div>
-	<p>I love coding.</p>
+	<p>
+		I love coding. Ever since I was a kid, I've dreamed of making my mark on the world as an
+		engineer.
+	</p>
+</div>
+
+<div>
+	<p>
+		There's not much here because this website is brand new, and I spent 3+ days on writing custom
+		shaders for the visual effect above.
+	</p>
 </div>
 
 <div>
@@ -50,6 +60,10 @@
 		align-items: center;
 		justify-content: center;
 		height: 500px;
+
+		background-image: url('/bg.png');
+		background-size: cover;
+		background-position: 100%;
 
 		font-size: 36px;
 		margin-bottom: 50px;

@@ -68,6 +68,10 @@
 
 		camera.position.z = 3;
 
+		THREE.DefaultLoadingManager.onLoad = () => {
+			reset();
+		};
+
 		let start = Date.now();
 		function animate() {
 			if (time > 1.5) {

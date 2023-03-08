@@ -69,6 +69,8 @@
 		camera.position.z = 3;
 
 		THREE.DefaultLoadingManager.onLoad = () => {
+			start = Date.now();
+			reset();
 			animate();
 		};
 
